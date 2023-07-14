@@ -1,16 +1,29 @@
+
+
 import { app } from "./firebase";
 import { createUserWithEmailAndPassword, getAuth, connectAuthEmulator, signInWithEmailAndPassword, signOut } from "firebase/auth"
+import Router from "next/router";
 
-const auth = getAuth(app);
+export const auth = getAuth(app);
 
 
 export async function signUp(email: string, password: string){
-    let result = createUserWithEmailAndPassword(auth, email, password).then(res => console.log(res)).catch(err => console.log(err.message))
+    let result = createUserWithEmailAndPassword(auth, email, password)
+    .then(res => {
+        console.log(res);
+        () => {Router.push("/")}
+    })
+    .catch(err => console.log(err.message))
     
 }
 
 export async function signIn(email: string, password: string){
-    let result = await signInWithEmailAndPassword(auth, email, password).then(res => console.log(res)).catch(err =>  console.log(err.message))
+    let result = await signInWithEmailAndPassword(auth, email, password)
+    .then(res => {
+        console.log(res);
+        () => {Router.push("/")}
+    })
+    .catch(err =>  console.log(err.message))
    
 } 
 

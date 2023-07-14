@@ -2,7 +2,12 @@
 
 import { logout, signIn, signUp } from '../firebase/auth'
 import './page.css'
+import { onAuthStateChanged } from 'firebase/auth'
+import Router from 'next/router'
+import { auth } from '../firebase/auth'
 import { useState, useEffect, ChangeEvent, Dispatch, SetStateAction } from 'react'
+import { useRouter } from 'next/navigation'
+
 
 export default function LoginForm(){
     const [email, setEmail] = useState("")
@@ -11,6 +16,8 @@ export default function LoginForm(){
     const [toggleLogin, setToggleLogin] = useState(true)
     const [haveAccount, setHaveAccount] = useState("Don't have an account")
     const [loginAction, setLoginAction] = useState("Sign Up")
+
+    const router = useRouter();
 
     const handleInputChange = (inputHandler: Dispatch<SetStateAction<string>>,e: ChangeEvent<HTMLInputElement>) => {
         console.log("email", email)
@@ -46,6 +53,17 @@ export default function LoginForm(){
         logout()
     }
 
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+          if(!user){
+            console.log("Not logged In")
+          }
+          else{
+           router.push("/")
+          }
+        })
+      }, [])
+
   
 
     return(
@@ -55,7 +73,7 @@ export default function LoginForm(){
         <input value={password} onChange={(e) => handleInputChange(setPassword, e)}/>
         <button onClick={handleLogin}>{buttonText}</button>
         <p>{haveAccount} <span onClick = {toggleSignInType}>{loginAction}</span></p>
-        <button onClick={handleLogout}>Logout</button>
+       
         </>
     )
 }

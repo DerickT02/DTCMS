@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase/auth'
 import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -36,6 +37,7 @@ useEffect(() => {
   return (
     
     <>
+      <Link href = "/createBlog"><button>Create Blog</button></Link>
       <button onClick={handleLogout}>Logout</button>
     </>
   )

@@ -22,7 +22,7 @@ export async function signIn(email: string, password: string){
     .then(res => {
         console.log(res);
         () => {Router.push("/")}
-    })
+    }) 
     .catch(err =>  console.log(err.message))
    
 } 

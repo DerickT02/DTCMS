@@ -2,15 +2,18 @@
 
 import Image from 'next/image'
 import { logout } from './firebase/auth'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase/auth'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import { postBlog } from './firebase/queries'
 
 
 export default function Home() {
   const router = useRouter();
+  const [createdId, setCreatedId] = useState("")
+  
 
   const handleLogout = () => {
     
@@ -21,7 +24,14 @@ export default function Home() {
 
 
    
-     
+const handleBlogCreate = () => {
+  postBlog().then((res) => {
+    setCreatedId(res.id);
+    console.log(createdId)
+    router.push(`/createBlog/${createdId}`);
+  })
+    
+} 
 
 useEffect(() => {
   onAuthStateChanged(auth, (user) => {
@@ -37,7 +47,7 @@ useEffect(() => {
   return (
     
     <>
-      <Link href = "/createBlog"><button>Create Blog</button></Link>
+      <button onClick={handleBlogCreate}>Create Blog</button>
       <button onClick={handleLogout}>Logout</button>
     </>
   )

@@ -26,9 +26,8 @@ export default function Home() {
    
 const handleBlogCreate = () => {
   postBlog().then((res) => {
-    setCreatedId(res.id);
-    console.log(createdId)
-    router.push(`/createBlog/${createdId}`);
+    console.log(res.id)
+    router.push(`/createBlog/${res.id}`);
   })
     
 } 

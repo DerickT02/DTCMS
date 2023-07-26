@@ -10,7 +10,7 @@ import Router from "next/router";
     comments: [Array]
 */
 
-const db = getFirestore(app)
+export const db = getFirestore(app)
 
 
 export async function postBlog(){
@@ -23,6 +23,12 @@ export async function postBlog(){
    return result
     
 }
+
+/*
+export async function getBlog(){
+    await get
+}
+*/
 
 export async function updateBlog(id: string, title: string, content: string){
     const docRef = doc(db, "Blogs", id)

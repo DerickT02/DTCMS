@@ -93,6 +93,7 @@ export default function CreateBlog(){
  // Store the previous jsonResult
 
  const [previousJsonResult, setPreviousJsonResult] = useState("");
+ const [previousTitle, setPreviousTitle] = useState("")
   const [initialContentSet, setInitialContentSet] = useState(false);
   const [editorContent, setEditorContent] = useState(""); // State to manage content in the text editor
 
@@ -106,6 +107,7 @@ export default function CreateBlog(){
         setEditorContent(JSON.parse(doc.data()?.content)); // Set the raw JSON content initially
         setInitialContentSet(true);
       }
+      setPreviousTitle(doc.data()?.title)
       setPreviousJsonResult(doc.data()?.content);
     });
   }, [id, initialContentSet]);
@@ -121,11 +123,11 @@ export default function CreateBlog(){
 
   // Update the database only when the jsonResult state changes
   useEffect(() => {
-    if (jsonResult !== "" && jsonResult !== previousJsonResult) {
+    if ((jsonResult !== "" && jsonResult !== previousJsonResult) || title !== "" && title !== previousTitle) {
       updateBlog(id, title, jsonResult);
       setPreviousJsonResult(jsonResult);
     }
-  }, [jsonResult, previousJsonResult]);
+  }, [jsonResult, previousJsonResult, title]);
 
 
 
@@ -135,7 +137,7 @@ export default function CreateBlog(){
         <>
             <Link href = "/"><button>Back</button></Link>
             <h1>Create Blog Post</h1>
-            <input placeholder="title" onChange={(e) => setTitle(e.target.value)} value = {title}></input>
+            <input placeholder="title" onChange={(e) => {setTitle(e.target.value)}} value = {title}></input>
             <br/>
             <br/>
             <ReactQuill theme="snow" modules={modules} formats={formats} value={editorContent} onChange={handleChange} />

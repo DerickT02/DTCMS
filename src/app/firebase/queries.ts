@@ -1,4 +1,4 @@
-import { getFirestore, setDoc, doc, addDoc, collection } from 'firebase/firestore'
+import { getFirestore, setDoc, doc, addDoc, collection, query, getDocs } from 'firebase/firestore'
 import { app } from './firebase'
 import Router from "next/router";
 /*
@@ -24,11 +24,22 @@ export async function postBlog(){
     
 }
 
-/*
-export async function getBlog(){
-    await get
-}
-*/
+export const getBlogs = async () => {
+    let result: any[] = [];
+    const q = query(collection(db, "Blogs"))
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+        let title = doc.data().title
+        let content = doc.data().content
+        let document = {title: title, content: content, id: doc.id}
+        result = [...result, document]
+    })
+    return result
+  }
+
+
+
+
 
 export async function updateBlog(id: string, title: string, content: string){
     const docRef = doc(db, "Blogs", id)

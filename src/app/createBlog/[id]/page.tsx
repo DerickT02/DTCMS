@@ -28,9 +28,11 @@ export default function CreateBlog(){
     const quillRef = useRef<HTMLElement>(null);
     const contentRef = useRef(null);
 
+    /*
     const imageHandler = () => {
       console.log("Image uploaded")
     }
+    */
 
     const modules = useMemo(() => ({
       toolbar: {
@@ -41,11 +43,15 @@ export default function CreateBlog(){
           ['link', 'image'],
           ['clean']
       ],
+      /*
       handlers:{
         image: imageHandler
         }  
+      
+      */
+        }
       }
-    }), []) 
+    ), []) 
       
       
 

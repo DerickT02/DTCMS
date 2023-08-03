@@ -1,0 +1,35 @@
+
+@media only screen and (min-width: 64em) {
+    .documents-container{
+        margin-top: 5em;
+        width: 100%;
+    }
+
+    .documents-container h2{
+        margin-left: 2em;
+    }
+
+
+
+    .documents-container .document{
+        display: grid;
+        grid-template-columns: 40em 57em 40em;
+        grid-template-rows: 100%;
+
+        
+    }
+
+    .documents-container .document #options{
+        position: relative;
+        right: 0;
+        
+      
+    }
+
+    .document-metrics{
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 30em;
+    }
+}

@@ -1,14 +1,16 @@
 'use client'
 
 import Link from "next/link"
-import { useCallback, useEffect, useState, useMemo, useRef, LegacyRef } from "react"
+import Form from 'react-bootstrap/Form';
+
+import { useEffect, useState, useMemo, useRef } from "react"
 import { useParams, useRouter } from 'next/navigation'
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../firebase/auth'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
-import { read } from "fs";
-import { postBlog, updateBlog } from "../../firebase/queries";
+
+import { updateBlog } from "../../firebase/queries";
 import { doc, onSnapshot } from "firebase/firestore";
 
 import { db } from "../../firebase/queries";
@@ -135,22 +137,23 @@ export default function CreateBlog(){
 
     return (
         <>
-            <Link href = "/"><button>Back</button></Link>
-            <h1>Create Blog Post</h1>
-            <input placeholder="title" onChange={(e) => {setTitle(e.target.value)}} value = {title}></input>
-            <br/>
-            <br/>
-            <ReactQuill theme="snow" modules={modules} formats={formats} value={editorContent} onChange={handleChange} />
-            <br/>
-            <br/>
-            
-           {/* <button onClick={() => handleBlogSubmit(title, jsonResult)}>Post Blog</button> */}
-            
-            <br/> 
-            <br/>
-            <h2>Preview Blog</h2>
-            <h1>{title}</h1>
-            <ReactQuill theme = "snow" modules = {readOnlyModules} value = {editorContent} readOnly = {true} />
+          <Link href = "/"><button>Back</button></Link>
+          <h1>Create Blog Post</h1>
+
+          <input placeholder="title" onChange={(e) => {setTitle((e.target as HTMLInputElement).value)}} defaultValue = {title}></input>
+          <br/>
+          <br/>
+          <ReactQuill theme="snow" modules={modules} formats={formats} value={editorContent} onChange={handleChange} />
+          <br/>
+          <br/>
+          
+          
+          
+          <br/> 
+          <br/>
+          <h2>Preview Blog</h2>
+          <h1>{title}</h1>
+          <ReactQuill theme = "snow" modules = {readOnlyModules} value = {editorContent} readOnly = {true} />
 
         </>
     )

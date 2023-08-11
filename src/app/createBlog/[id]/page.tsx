@@ -2,17 +2,16 @@
 
 import Link from "next/link"
 import Form from 'react-bootstrap/Form';
-
 import { useEffect, useState, useMemo, useRef } from "react"
 import { useParams, useRouter } from 'next/navigation'
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from '../../firebase/auth'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css';
-
+import { MdOutlineArrowBack } from 'react-icons/md'
 import { updateBlog } from "../../firebase/queries";
 import { doc, onSnapshot } from "firebase/firestore";
-
+import "./page.css"
 import { db } from "../../firebase/queries";
 
 
@@ -136,25 +135,34 @@ export default function CreateBlog(){
       
 
     return (
-        <>
-          <Link href = "/"><button>Back</button></Link>
-          <h1>Create Blog Post</h1>
+      <>
+      <Link href = "/"><MdOutlineArrowBack color={"black"}/></Link>
+        <div className = "editor">
+          
+        
 
-          <input placeholder="title" onChange={(e) => {setTitle((e.target as HTMLInputElement).value)}} defaultValue = {title}></input>
-          <br/>
-          <br/>
-          <ReactQuill theme="snow" modules={modules} formats={formats} value={editorContent} onChange={handleChange} />
-          <br/>
-          <br/>
+          <div className = "title-editor">
+            <h2>Title</h2>
+            <input placeholder="title" onChange={(e) => {setTitle((e.target as HTMLInputElement).value)}} defaultValue = {title}></input>
+          </div>
           
-          
-          
-          <br/> 
           <br/>
-          <h2>Preview Blog</h2>
-          <h1>{title}</h1>
-          <ReactQuill theme = "snow" modules = {readOnlyModules} value = {editorContent} readOnly = {true} />
+          <br/>
 
-        </>
+          <div className="text-editor">
+            <ReactQuill theme="snow" modules={modules} formats={formats} value={editorContent} onChange={handleChange} />
+          </div>
+
+          <br/>
+          <br/>
+          
+          
+          
+          
+          
+
+        </div>
+      
+      </>  
     )
 }

@@ -56,9 +56,11 @@ export default function LoginForm(){
     useEffect(() => {
         onAuthStateChanged(auth, (user) => {
           if(!user){
+        
             console.log("Not logged In")
           }
           else{
+            
            router.push("/")
           }
         })
@@ -67,13 +69,15 @@ export default function LoginForm(){
   
 
     return(
-        <>
-        
-        <input value={email} onChange={(e) => handleInputChange(setEmail, e)}/>
-        <input value={password} onChange={(e) => handleInputChange(setPassword, e)}/>
-        <button onClick={handleLogin}>{buttonText}</button>
-        <p>{haveAccount} <span onClick = {toggleSignInType}>{loginAction}</span></p>
-       
-        </>
+        <div className = "auth-form"> 
+            <div className = "auth-form-container">
+                <div className = "auth-form-input-container">
+                    <input value={email} onChange={(e) => handleInputChange(setEmail, e)}/>
+                    <input value={password} onChange={(e) => handleInputChange(setPassword, e)}/>
+                    <button onClick={handleLogin}>{buttonText}</button>
+                    <p>{haveAccount} <span onClick = {toggleSignInType}>{loginAction}</span></p>
+                </div>    
+            </div>
+        </div>
     )
 }

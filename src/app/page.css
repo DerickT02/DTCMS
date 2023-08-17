@@ -1,17 +1,33 @@
 
 @media only screen and (min-width: 64em) {
-    .create-blog{
-        margin-left: 5%;
-        margin-top: 5%;
-        width: 10em;
-        height: 15em;
-        border-style: double;
-        border-color: black;
+    body{
+        background-color: black;
+        height: 100%;
+        margin: 0;
+    }
+
+    .home{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
+        height: 100%;
+    }
 
+    .home-bar{
+        padding: 30px;
+        display: flex;
+        flex-direction: row;
+        background-color: rgb(40, 41, 44);
+        height: 100vmin;
+    }
+
+    .home-content{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .create-blog{
+        padding-left: 30px;
+        background-color: rgb(28, 28, 30);
     }
 
     .create-blog:hover{
@@ -21,6 +37,7 @@
     .documents-container{
         margin-top: 5em;
         width: 100%;
+        margin-left: 2vmin;
     }
 
     .documents-container h2{
@@ -30,8 +47,10 @@
 
 
     .documents-container .document{
+        width: 100%;
         display: grid;
-        grid-template-columns: 40em 57em 40em;
+        grid-template-columns: 100vmin 15vmin;
+        column-gap: 450px;
         grid-template-rows: 100%;
 
         
@@ -49,5 +68,7 @@
         flex-direction: row;
         align-items: baseline;
         gap: 30em;
+        color: white;
+        margin-bottom: 30px;
     }
 }

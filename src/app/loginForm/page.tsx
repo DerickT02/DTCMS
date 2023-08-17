@@ -70,14 +70,16 @@ export default function LoginForm(){
 
     return(
         <div className = "auth-form"> 
-            <div className = "auth-form-container">
+        <h1>DTCMS</h1>
+           
+                
                 <div className = "auth-form-input-container">
-                    <input value={email} onChange={(e) => handleInputChange(setEmail, e)}/>
-                    <input value={password} onChange={(e) => handleInputChange(setPassword, e)}/>
+                    <input placeholder='email' value={email} onChange={(e) => handleInputChange(setEmail, e)}/>
+                    <input type = "password" placeholder='password'  value={password} onChange={(e) => handleInputChange(setPassword, e)}/>
                     <button onClick={handleLogin}>{buttonText}</button>
                     <p>{haveAccount} <span onClick = {toggleSignInType}>{loginAction}</span></p>
                 </div>    
-            </div>
+            
         </div>
     )
 }

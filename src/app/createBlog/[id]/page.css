@@ -1,5 +1,9 @@
 
 @media only screen and (min-width: 64em) {
+    body{
+        background-color: rgb(40, 40, 40);
+    }
+
     .editor{
         display: flex;
         flex-direction: column;

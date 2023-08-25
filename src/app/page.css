@@ -26,7 +26,7 @@
     }
 
     .create-blog{
-        padding-left: 30px;
+        padding-left: 150px;
         background-color: rgb(28, 28, 30);
     }
 
@@ -49,9 +49,10 @@
     .documents-container .document{
         width: 100%;
         display: grid;
-        grid-template-columns: 100vmin 15vmin;
+        grid-template-columns: 30vmin 4vmin 20vmin;
         column-gap: 450px;
         grid-template-rows: 100%;
+        color: white;
 
         
     }
@@ -66,9 +67,13 @@
     .document-metrics{
         display: flex;
         flex-direction: row;
-        align-items: baseline;
+        align-items: flex-start;
         gap: 30em;
         color: white;
         margin-bottom: 30px;
+    }
+
+    .document-metrics h2{
+        font-size: 70px;
     }
 }

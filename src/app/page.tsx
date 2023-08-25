@@ -96,7 +96,7 @@ console.log(documentList)
                   <ListGroup.Item key = {document.id} className='document' style = {{"backgroundColor": index % 2 == 0 ? "rgb(28,28,30)" : "black", "border":"none"}}>
                   
                         <Link href = {`/createBlog/${document.id}`}>{document.title != "" ? document.title : "Untitled Blog"}</Link>
-                       
+                        <h2>{document.views}</h2>
                         <DropdownButton id = "options" title = "Options">
                           <Dropdown.Item><Button variant="danger">Delete Blog</Button></Dropdown.Item>
                         </DropdownButton>

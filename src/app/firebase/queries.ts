@@ -31,7 +31,8 @@ export const getBlogs = async () => {
     querySnapshot.forEach((doc) => {
         let title = doc.data().title
         let content = doc.data().content
-        let document = {title: title, content: content, id: doc.id}
+        let views = doc.data().views
+        let document = {title: title, content: content, views: views, id: doc.id}
         result = [...result, document]
     })
     return result

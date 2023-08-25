@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "firebase-script":"node scripts/scripts.mjs"
   },
   "dependencies": {
     "@types/node": "20.4.1",
